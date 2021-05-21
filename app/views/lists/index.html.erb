@@ -7,11 +7,14 @@
     </p>
   </div>
 </div>
-<div class="container mt-3">
+<div class="container mt-3" data-aos="fade-up">
   <h3>Your Lists</h3>
+  <%= link_to new_list_path do %>
+    <i id="add" class="fas fa-plus-square"></i>
+  <% end  %>
   <div data-aos="fade-up" class="cards">
     <% @lists.each do |list| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.canadianunderwriter.ca/uploads/2020/06/iStock-686746978-film.jpg)">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : image_path("https://source.unsplash.com/1600x900/#{list.name}") %>)">
         <%= list.name %>
         <%= link_to list_path(list), method: :delete, data: { confirm: "Destroy #{list.name}?" }, class: 'card-destroy' do %>
           <i id="delete" class="far fa-trash-alt"></i>
@@ -20,6 +23,3 @@
     <% end %>
   </div>
 </div>
-<%= link_to new_list_path do %>
-  <i id="add" class="fas fa-plus-square">Add new list</i>
-<% end  %>

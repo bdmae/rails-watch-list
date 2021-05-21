@@ -4,6 +4,19 @@
 <%= link_to lists_path do %>
   <button type="button" class="btn btn-dark">Home</button>
 <% end %>
-<div data-aos="fade-up" class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.canadianunderwriter.ca/uploads/2020/06/iStock-686746978-film.jpg)">
+<div data-aos="fade-up" class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @list.photo.attached? ? cl_image_path(@list.photo.key) : image_path("https://source.unsplash.com/1600x900/#{@list.name}") %>)">
   <p><%= @list.name %></p>
+</div>
+<% if @list.bookmarks.any? %>
+  <% @list.bookmarks.each do |bookmark| %>
+    <div data-aos="fade-up" class="cards">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.canadianunderwriter.ca/uploads/2020/06/iStock-686746978-film.jpg)">
+        <%= bookmark.name %>
+        <%= link_to list_path(list), method: :delete, data: { confirm: "Destroy #{list.name}?" }, class: 'card-destroy' do %>
+          <i id="delete" class="far fa-trash-alt"></i>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 </div>
