@@ -1,3 +1,9 @@
+<%= link_to new_list_path do %>
+  <button type="button" class="btn btn-dark">Add new list</button>
+<% end %>
+<%= link_to lists_path do %>
+  <button type="button" class="btn btn-dark">Home</button>
+<% end %>
 <div data-aos="fade-up" class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.canadianunderwriter.ca/uploads/2020/06/iStock-686746978-film.jpg)">
   <p><%= @list.name %></p>
 </div>

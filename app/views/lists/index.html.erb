@@ -1,5 +1,6 @@
 <div class="banner" style="background-image: url(https://images.unsplash.com/photo-1521967906867-14ec9d64bee8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80);">
   <div class="container">
+    <P>THIS IS LOCAL, REMOVE AFTER</p>
     <h1>Movies bring <strong>happiness</strong></h1>
     <p>
       <span id="banner-typed-text"></span>
@@ -12,16 +13,13 @@
     <% @lists.each do |list| %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.canadianunderwriter.ca/uploads/2020/06/iStock-686746978-film.jpg)">
         <%= list.name %>
-        <%= link_to new_list_path(list), class: 'card-add-link' do %>
-          <i id="add" class="fas fa-plus-square">Add new list</i>
-        <% end %>
-        <%= link_to lists_path(list), method: :delete, data: { confirm: "Destroy #{list.name}?" }, class: 'card-destroy' do %>
+        <%= link_to list_path(list), method: :delete, data: { confirm: "Destroy #{list.name}?" }, class: 'card-destroy' do %>
           <i id="delete" class="far fa-trash-alt"></i>
         <% end %>
       </div>
-      <%= link_to '', list_path(list), class: 'card-link' %>
-    </div>
+    <% end %>
   </div>
-<% end %>
 </div>
-</div>
+<%= link_to new_list_path do %>
+  <i id="add" class="fas fa-plus-square">Add new list</i>
+<% end  %>
